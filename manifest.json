@@ -1,1 +1,18 @@
-
+{
+  "name": "K2 Business Manager",
+  "short_name": "K2 Manager",
+  "description": "Manage sales, products, expenses and customers.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#071426",
+  "theme_color": "#071426",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./K2-logo.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}
