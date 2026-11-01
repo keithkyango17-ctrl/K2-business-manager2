@@ -23,9 +23,11 @@ function showSales() {
       "afterend", section
     );
   }
+section.innerHTML = `
+    <button onclick="goHome()">← Home</button>
 
-  section.innerHTML = `
     <h3>Record New Sale</h3>
+  
     <label>Customer Name</label>
 <input id="saleCustomer" placeholder="Customer name">
 
