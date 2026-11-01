@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080f20">
+  <title>K2 Business Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div>
+      <h2>K2 Business Manager</h2>
+      <p>Your business, under control.</p>
+    </div>
+    <div class="avatar">K2</div>
+  </header>
+
+  <main id="dashboardPage" class="page">
+    <section class="welcome">
+      <p>WELCOME BACK</p>
+      <h1>Business Dashboard</h1>
+      <span id="today"></span>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <p>Total Sales</p>
+        <h2 id="sales">UGX 0</h2>
+      </div>
+      <div class="stat">
+        <p>Expenses</p>
+        <h2 id="expenses">UGX 0</h2>
+      </div>
+      <div class="stat">
+        <p>Net Profit</p>
+        <h2 id="profit">UGX 0</h2>
+      </div>
+      <div class="stat">
+        <p>Products</p>
+        <h2 id="products">0</h2>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>Quick Actions</h3>
+      <div class="actions">
+        <button onclick="showSales()">＋ Add Sale</button>
+        <button onclick="showProducts()">＋ Products</button>
+        <button onclick="showMessage('Add Expense')">＋ Expense</button>
+        <button onclick="showReports()">Reports</button>
+        <button onclick="createBackup()">Backup Data</button>
+<button onclick="document.getElementById('restoreFile').click()">Restore Data</button>
+<input type="file" id="restoreFile" accept=".json" onchange="restoreBackup(event)" style="display:none">
+        <button onclick="showCustomers()">＋ Customers</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>Recent Activity</h3>
+      <p id="activity">No business activity yet.</p>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+  <button onclick="goHome()">⌂ Home</button>
+  <button onclick="showProducts()">▣ Products</button>
+  <button onclick="showSales()">↗ Sales</button>
+  <button onclick="showReceipts()">🧾 Receipts</button>
+  <button onclick="showCustomers()">👥 Customers</button>
+  <button onclick="showExpenses()">＋ Expenses</button>
+  <button onclick="showReports()">📊 Reports</button>
+  <button onclick="showSettings()">⚙ Settings</button>
+  </nav>
+  
+  <script src="app.js"></script>
+  <script src="products.js"></script>
+  <script src="sales.js"></script>
+  <script src="expenses.js"></script>
+  <script src="customers.js"></script>
+  <script src="reports.js"></script>
+  <script src="backup.js"></script>
+  <div id="salesPage" class="page" style="display:none;">
+
+  <h2>Record New Sale</h2>
+
+  <label>Select Product</label>
+  <select id="saleProduct">
+    <option value="">Choose a product</option>
+  </select>
+
+  <label>Available Stock</label>
+  <input id="saleStock" readonly>
+
+  <label>Selling Price</label>
+  <input id="salePrice" type="number" readonly>
+
+  <label>Quantity Sold</label>
+  <input id="saleQuantity" type="number" min="1">
+
+  <h3 id="saleTotal">Total: UGX 0</h3>
+
+  <button onclick="completeSale()">Complete Sale</button>
+
+  <div id="salesMessage"></div>
+
+  </div>
+  <script src="security.js"></script>
+  <div id="settingsPage" class="page" style="display:none;">
+  <h2>Business Settings</h2>
+
+  <label>Business Name</label>
+  <input id="businessName" placeholder="Business Name">
+
+  <label>Phone Number</label>
+  <input id="businessPhone" placeholder="Phone Number">
+
+  <label>Business Address</label>
+  <input id="businessAddress" placeholder="Business Address">
+
+    <label>Currency</label>
+<select id="businessCurrency">
+  <option value="UGX">UGX - Uganda Shillings</option>
+  <option value="USD">USD - US Dollars</option>
+  <option value="KES">KES - Kenya Shillings</option>
+</select>
+
+  <button onclick="saveBusinessSettings()">Save Settings</button>
+  </div>
+
+  <div id="receiptsPage" class="page" style="display:none;">
+  <h2>Receipts</h2>
+
+  <h3>Create New Receipt</h3>
+
+  label>Customer Name</label>
+  <input id="receiptCustomer" placeholder="Enter customer name">
+
+  <label>Customer Phone</label>
+  <input id="receiptPhone" placeholder="Enter phone number">
+
+  <label>Product</label>
+  <select id="receiptProduct" onchange="updateReceiptProduct()">
+  <option value="">Choose a product</option>
+</select>
+
+<label>Available Stock</label>
+<input id="receiptStock" readonly placeholder="Stock available">
+
+  <input id="receiptQuantity" type="number"
+placeholder="Quantity" oninput="calculateReceiptTotal()">
+
+<input id="receiptPrice" type="number"
+placeholder="Price" oninput="calculateReceiptTotal()">
+
+    <h3 id="receiptLiveTotal">TOTAL: UGX 0</h3>
+
+  <button onclick="createReceipt()">Create Receipt</button>
+
+  <div id="receiptResult"></div>
+    <h3>Receipt History</h3>
+<div id="receiptHistory"></div>
+
+    <hr>
+
+<h3>Previous Receipts</h3>
+
+<input
+  type="text"
+  id="receiptSearch"
+  placeholder="Search receipt number or customer..."
+  oninput="searchReceipts()"
+>
+
+<button onclick="showReceiptHistory()">
+  View Receipt History
+</button>
+
+<div id="receiptHistory"></div>
+  </div>
+  <script src="settings.js"></script>
+</body>
+</html>
