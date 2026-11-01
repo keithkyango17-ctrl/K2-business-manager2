@@ -111,5 +111,3 @@ function deleteProduct(id) {
   saveInventory();
   showProducts();
 }
-
-showProducts();
