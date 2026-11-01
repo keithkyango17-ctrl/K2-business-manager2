@@ -136,3 +136,57 @@ button:active {
   color: #a7b6ca;
   font-size: 11px;
 }
+/* K2 PHONE DISPLAY IMPROVEMENTS */
+@media screen and (max-width: 600px) {
+
+  main {
+    padding: 18px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .stat {
+    padding: 18px 12px;
+    min-height: 110px;
+  }
+
+  .stat h2 {
+    font-size: 17px;
+  }
+
+  .panel {
+    padding: 18px;
+    margin-top: 20px;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .actions button {
+    min-width: 0;
+    min-height: 50px;
+    white-space: normal;
+  }
+
+  input, select {
+    width: 100%;
+    min-width: 0;
+    padding: 14px;
+    margin-bottom: 14px;
+  }
+
+  .bottom-nav {
+    justify-content: flex-start;
+    padding: 12px;
+  }
+
+  .bottom-nav button {
+    min-width: 105px;
+  }
+}
