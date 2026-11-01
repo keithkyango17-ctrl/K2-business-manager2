@@ -1,0 +1,201 @@
+
+function showSettings() {
+  document.querySelectorAll('.page').forEach(page => {
+    page.style.display = 'none';
+  });
+
+  document.getElementById('settingsPage').style.display = 'block';
+
+  let settings = JSON.parse(
+    localStorage.getItem('k2_business_settings')
+  ) || {};
+
+  document.getElementById('businessName').value =
+    settings.name || 'K2 Phone World';
+
+  document.getElementById('businessPhone').value =
+    settings.phone || '';
+
+  document.getElementById('businessAddress').value =
+    settings.address || '';
+
+  document.getElementById('businessCurrency').value =
+    settings.currency || 'UGX';
+}
+
+function saveBusinessSettings() {
+  let settings = {
+    name: document.getElementById('businessName').value,
+    phone: document.getElementById('businessPhone').value,
+    address: document.getElementById('businessAddress').value,
+    currency: document.getElementById('businessCurrency').value
+  };
+
+  localStorage.setItem(
+    'k2_business_settings',
+    JSON.stringify(settings)
+  );
+
+  alert('Business settings saved successfully!');
+}
+
+
+let receiptHistory = JSON.parse(
+  localStorage.getItem("k2_receipt_history") || "[]"
+);
+
+let receiptCounter = Number(
+  localStorage.getItem("k2_last_receipt") || 0
+);
+
+function showReceipts() {
+  document.querySelectorAll(".page").forEach(page => {
+    page.style.display = "none";
+  });
+
+  document.getElementById("inventorySection")?.remove();
+  document.getElementById("salesSection")?.remove();
+  document.getElementById("profileSection")?.remove();
+
+  const page = document.getElementById("receiptsPage");
+
+  if (page) {
+    page.style.display = "block";
+  }
+
+  displayReceiptHistory();
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function createReceipt() {
+  const customer = document.getElementById("receiptCustomer").value.trim();
+  const phone = document.getElementById("receiptPhone").value.trim();
+  const product = document.getElementById("receiptProduct").value.trim();
+  const quantity = Number(document.getElementById("receiptQuantity").value);
+  const price = Number(document.getElementById("receiptPrice").value);
+
+  if (!product || quantity <= 0 || price <= 0) {
+    alert("Please enter valid receipt details.");
+    return;
+  }
+
+  receiptCounter++;
+
+  const receiptID = "K2-" + String(receiptCounter).padStart(4, "0");
+  const total = quantity * price;
+  const date = new Date().toLocaleString();
+
+  const receipt = {
+    receiptID,
+    customer: customer || "Walk-in Customer",
+    phone,
+    product,
+    quantity,
+    price,
+    total,
+    date
+  };
+
+  receiptHistory.unshift(receipt);
+
+  localStorage.setItem("k2_last_receipt", receiptCounter);
+  localStorage.setItem(
+    "k2_receipt_history",
+    JSON.stringify(receiptHistory)
+  );
+
+  displayReceipt(receipt);
+
+  displayReceiptHistory();
+
+  document.getElementById("receiptCustomer").value = "";
+  document.getElementById("receiptPhone").value = "";
+  document.getElementById("receiptProduct").value = "";
+  document.getElementById("receiptQuantity").value = "";
+  document.getElementById("receiptPrice").value = "";
+}
+
+function displayReceipt(receipt) {
+  const business = JSON.parse(
+    localStorage.getItem("k2_business_settings") || "{}"
+  );
+
+  const currency = business.currency || "UGX";
+  const businessName = business.name || "K2 Phone World";
+  const businessPhone = business.phone || "";
+
+  document.getElementById("receiptResult").innerHTML = `
+    <div id="printReceipt" style="
+      background:white;color:#111;padding:20px;
+      margin-top:20px;border-radius:12px;
+      border-top:8px solid #087bff;font-family:Arial;">
+
+      <div style="background:#080d20;color:white;padding:15px;text-align:center;">
+        <h2 style="color:#1685ff;">${businessName}</h2>
+        <p>${businessPhone}</p>
+        <h3>SALES RECEIPT</h3>
+      </div>
+
+      <h3>Receipt No: ${receipt.receiptID}</h3>
+      <p>Date: ${receipt.date}</p>
+      <p>Customer: ${receipt.customer}</p>
+      <p>Phone: ${receipt.phone || "N/A"}</p>
+
+      <hr>
+
+      <p>Product: ${receipt.product}</p>
+      <p>Quantity: ${receipt.quantity}</p>
+      <p>Unit Price: ${currency} ${receipt.price.toLocaleString()}</p>
+
+      <h2 style="color:#075bc5;">
+        TOTAL: ${currency} ${receipt.total.toLocaleString()}
+      </h2>
+
+      <p style="text-align:center;">Thank you for shopping with us!</p>
+
+      <button onclick="window.print()">Print Receipt</button>
+    </div>
+  `;
+}
+
+function displayReceiptHistory() {
+  const list = document.getElementById("receiptHistory");
+  if (!list) return;
+
+  if (receiptHistory.length === 0) {
+    list.innerHTML = "<p>No receipts yet.</p>";
+    return;
+  }
+
+  list.innerHTML = receiptHistory.map(r => `
+    <div style="padding:12px;border-bottom:1px solid #263957;">
+      <strong>${r.receiptID}</strong>
+      <p>${r.customer}</p>
+      <p>${r.product} × ${r.quantity}</p>
+      <p>Total: UGX ${r.total.toLocaleString()}</p>
+      <small>${r.date}</small>
+      <button onclick="reprintReceipt('${r.receiptID}')">Reprint</button>
+    </div>
+  `).join("");
+}
+
+function reprintReceipt(id) {
+  const receipt = receiptHistory.find(r => r.receiptID === id);
+  if (receipt) displayReceipt(receipt);
+}
+
+function calculateReceiptTotal() {
+  const quantity = Number(
+    document.getElementById("receiptQuantity").value
+  );
+
+  const price = Number(
+    document.getElementById("receiptPrice").value
+  );
+
+  const total = quantity * price;
+
+  document.getElementById("receiptLiveTotal").textContent =
+    "TOTAL: UGX " + total.toLocaleString();
+}
