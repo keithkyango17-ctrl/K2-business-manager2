@@ -190,3 +190,255 @@ button:active {
     min-width: 105px;
   }
 }
+/* =================================
+   K2 BUSINESS MANAGER HOME DESIGN
+================================= */
+
+#dashboardPage {
+  max-width: 1100px;
+  margin: auto;
+  padding: 28px 20px 110px;
+  background: #0b1730;
+  min-height: 100vh;
+}
+
+/* HEADER */
+
+#dashboardPage .welcome {
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid #263957;
+}
+
+.home-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.home-logo {
+  width: 74px;
+  height: 74px;
+  object-fit: contain;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.home-brand h2 {
+  color: #ffffff;
+  font-size: 19px;
+  margin-bottom: 7px;
+}
+
+.home-brand p {
+  color: #9aacc5 !important;
+  font-size: 14px !important;
+  letter-spacing: 0 !important;
+}
+
+.home-bell {
+  margin-left: auto;
+  font-size: 25px;
+  color: #9aacc5;
+}
+
+/* WELCOME MESSAGE */
+
+.welcome-message span {
+  color: #60a5fa;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.welcome-message h1 {
+  color: white;
+  font-size: 36px;
+  margin: 17px 0;
+}
+
+.welcome-message p {
+  color: #a7b6ca !important;
+  font-size: 17px !important;
+  letter-spacing: 0 !important;
+}
+
+.welcome-message small {
+  display: block;
+  color: #9aacc5;
+  margin-top: 12px;
+}
+
+/* STATISTICS */
+
+#dashboardPage .stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+#dashboardPage .stat {
+  background: #172b49;
+  border: 1px solid #1d3455;
+  border-radius: 20px;
+  padding: 22px;
+  min-width: 0;
+}
+
+.stat-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.stat-heading p {
+  color: #b6c7dc;
+  font-size: 16px;
+}
+
+.stat-heading span {
+  color: #60a5fa;
+  font-size: 23px;
+}
+
+#dashboardPage .stat h2 {
+  color: white;
+  font-size: 30px;
+  overflow-wrap: anywhere;
+}
+
+/* QUICK ACTIONS */
+
+#dashboardPage .panel {
+  background: #142844;
+  border: 1px solid #1d3455;
+  border-radius: 20px;
+  padding: 22px;
+  margin-top: 24px;
+}
+
+#dashboardPage .panel h3 {
+  color: white;
+  font-size: 22px;
+  margin-bottom: 22px;
+}
+
+#dashboardPage .actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+#dashboardPage .actions button {
+  background: #172b49;
+  border: 1px solid #203b60;
+  border-radius: 19px;
+  padding: 23px 20px;
+  min-height: 145px;
+  text-align: left;
+  color: white;
+  font-size: 19px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+#dashboardPage .actions button small {
+  color: #b6c7dc;
+  font-size: 15px;
+  font-weight: normal;
+}
+
+#dashboardPage .actions button.primary-action {
+  background: #1679e8;
+  border-color: #1679e8;
+}
+
+#dashboardPage .actions button.primary-action small {
+  color: white;
+}
+
+#dashboardPage .actions button:active {
+  transform: scale(0.98);
+}
+
+/* RECENT ACTIVITY */
+
+.activity-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.activity-content span {
+  color: #60a5fa;
+  font-size: 23px;
+}
+
+.activity-content p {
+  color: #b6c7dc !important;
+  font-size: 15px !important;
+  letter-spacing: 0 !important;
+}
+
+/* PHONE AND TABLET */
+
+@media (max-width: 600px) {
+  #dashboardPage {
+    padding: 22px 14px 110px;
+  }
+
+  .home-brand {
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .home-logo {
+    width: 68px;
+    height: 68px;
+  }
+
+  .home-brand h2 {
+    font-size: 16px;
+  }
+
+  .welcome-message h1 {
+    font-size: 30px;
+  }
+
+  #dashboardPage .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  #dashboardPage .stat {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  #dashboardPage .stat h2 {
+    font-size: 25px;
+  }
+
+  #dashboardPage .actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  #dashboardPage .actions button {
+    min-height: 145px;
+    padding: 17px 14px;
+    font-size: 17px;
+  }
+
+  #dashboardPage .actions button small {
+    font-size: 13px;
+  }
+
+  #dashboardPage .panel {
+    padding: 18px;
+  }
+}
