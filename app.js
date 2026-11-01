@@ -33,17 +33,6 @@ function updateDashboard() {
 
   document.getElementById("products").textContent = productCount;
 }
-  document.getElementById("sales").textContent =
-    "UGX " + sales.toLocaleString();
-
-  document.getElementById("expenses").textContent =
-    "UGX " + expenses.toLocaleString();
-
-  document.getElementById("profit").textContent =
-    "UGX " + (sales - expenses).toLocaleString();
-
-  document.getElementById("products").textContent = products;
-}
 
 function showMessage(action) {
   if (action === "Add Sale") {
@@ -88,11 +77,6 @@ function showMessage(action) {
 function updateActivity(message) {
   document.getElementById("activity").textContent = message;
 }
-
-document.getElementById("today").textContent =
-  new Date().toDateString();
-
-updateDashboard();
 
 function goHome() {
   document.querySelectorAll(".page").forEach(page => {
@@ -142,3 +126,11 @@ function showProfile() {
   section.style.display = "block";
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
+
+window.addEventListener("load", function() {
+  document.getElementById("today").textContent =
+    new Date().toDateString();
+
+  updateDashboard();
+  goHome();
+});
