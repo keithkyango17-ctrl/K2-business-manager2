@@ -10,128 +10,100 @@
 </head>
 <body>
 
+  <!-- HOME DASHBOARD -->
   <main id="dashboardPage" class="page">
 
-    <section class="welcome">
-      <div class="home-brand">
-        <img src="./k2-logo.png" class="home-logo"
-             alt="K2 Business Manager Logo">
-        <div>
-          <h2>K2 BUSINESS MANAGER</h2>
-          <p>Business dashboard</p>
-        </div>
-        <div class="home-bell">♧</div>
+    <header class="home-brand">
+      <img src="./k2-logo.png" class="home-logo" alt="K2 Logo">
+      <div>
+        <h2>K2 BUSINESS MANAGER</h2>
+        <p>Business dashboard</p>
       </div>
+    </header>
 
-      <div class="welcome-message">
-        <span>WELCOME BACK</span>
-        <h1>Good to see you!</h1>
-        <p>Here's how your business is performing.</p>
-        <small id="today"></small>
-      </div>
+    <section class="welcome welcome-message">
+      <p>WELCOME BACK</p>
+      <h1>Good to see you!</h1>
+      <span>Here's how your business is performing.</span>
+      <p id="today"></p>
     </section>
 
+    <!-- BUSINESS STATISTICS -->
     <section class="stats">
+
       <div class="stat">
-        <div class="stat-heading">
-          <p>Total Sales</p><span>↗</span>
-        </div>
+        <p>Total Sales</p>
         <h2 id="sales">UGX 0</h2>
       </div>
 
       <div class="stat">
-        <div class="stat-heading">
-          <p>Expenses</p><span>◈</span>
-        </div>
+        <p>Expenses</p>
         <h2 id="expenses">UGX 0</h2>
       </div>
 
       <div class="stat">
-        <div class="stat-heading">
-          <p>Net Profit</p><span>▥</span>
-        </div>
+        <p>Net Profit</p>
         <h2 id="profit">UGX 0</h2>
       </div>
 
       <div class="stat">
-        <div class="stat-heading">
-          <p>Products</p><span>▣</span>
-        </div>
+        <p>Products</p>
         <h2 id="products">0</h2>
       </div>
+
     </section>
 
-    <section class="panel home-actions">
+    <!-- QUICK ACTIONS -->
+    <section class="panel">
       <h3>Quick Actions</h3>
 
       <div class="actions">
-        <button onclick="showSales()" class="primary-action">
-          ＋ New Sale
-          <small>Record a transaction</small>
+
+        <button onclick="showSales()">
+          <span>＋</span>
+          New Sale
         </button>
 
         <button onclick="showProducts()">
-          ▣ Products
-          <small>Manage inventory</small>
+          <span>▣</span>
+          Products
         </button>
 
         <button onclick="showCustomers()">
-          ♙ Customers
-          <small>Customer records</small>
+          <span>👥</span>
+          Customers
         </button>
 
         <button onclick="showReports()">
-          ▥ Reports
-          <small>Business performance</small>
+          <span>▤</span>
+          Reports
         </button>
 
         <button onclick="showReceipts()">
-          🧾 Receipts
-          <small>Manage receipts</small>
+          <span>🧾</span>
+          Receipts
         </button>
 
         <button onclick="showExpenses()">
-          ＋ Expenses
-          <small>Track expenses</small>
+          <span>＋</span>
+          Expenses
         </button>
 
-        <button onclick="createBackup()">
-          ⇩ Backup Data
-          <small>Save your business data</small>
-        </button>
-
-        <button onclick="document.getElementById('restoreFile').click()">
-          ⇧ Restore Data
-          <small>Restore saved data</small>
-        </button>
-
-        <input type="file" id="restoreFile" accept=".json"
-          onchange="restoreBackup(event)" style="display:none">
       </div>
     </section>
 
-    <section class="panel recent-activity">
+    <!-- RECENT ACTIVITY -->
+    <section class="panel">
       <h3>Recent Activity</h3>
-      <div class="activity-content">
-        <span>◉</span>
-        <p id="activity">No business activity yet.</p>
-      </div>
+      <p id="activity">No business activity yet.</p>
     </section>
 
   </main>
 
-  <nav class="bottom-nav">
-    <button onclick="goHome()">⌂ Home</button>
-    <button onclick="showProducts()">▣ Products</button>
-    <button onclick="showSales()">↗ Sales</button>
-    <button onclick="showReceipts()">🧾 Receipts</button>
-    <button onclick="showCustomers()">👥 Customers</button>
-    <button onclick="showExpenses()">＋ Expenses</button>
-    <button onclick="showReports()">📊 Reports</button>
-    <button onclick="showSettings()">⚙ Settings</button>
-  </nav>
 
+  <!-- SALES PAGE -->
   <div id="salesPage" class="page" style="display:none;">
+
     <h2>Record New Sale</h2>
 
     <label>Select Product</label>
@@ -148,18 +120,18 @@
     <label>Quantity Sold</label>
     <input id="saleQuantity" type="number" min="1">
 
-    <label>Customer Name</label>
-    <input id="saleCustomer" placeholder="Enter customer name">
-
-    <label>Customer Phone</label>
-    <input id="saleCustomerPhone" placeholder="Enter phone number">
-
     <h3 id="saleTotal">Total: UGX 0</h3>
+
     <button onclick="completeSale()">Complete Sale</button>
+
     <div id="salesMessage"></div>
+
   </div>
 
+
+  <!-- SETTINGS PAGE -->
   <div id="settingsPage" class="page" style="display:none;">
+
     <h2>Business Settings</h2>
 
     <label>Business Name</label>
@@ -179,9 +151,13 @@
     </select>
 
     <button onclick="saveBusinessSettings()">Save Settings</button>
+
   </div>
 
+
+  <!-- RECEIPTS PAGE -->
   <div id="receiptsPage" class="page" style="display:none;">
+
     <h2>Receipts</h2>
 
     <h3>Create New Receipt</h3>
@@ -200,11 +176,19 @@
     <label>Available Stock</label>
     <input id="receiptStock" readonly placeholder="Stock available">
 
-    <input id="receiptQuantity" type="number"
-      placeholder="Quantity" oninput="calculateReceiptTotal()">
+    <input
+      id="receiptQuantity"
+      type="number"
+      placeholder="Quantity"
+      oninput="calculateReceiptTotal()"
+    >
 
-    <input id="receiptPrice" type="number"
-      placeholder="Price" oninput="calculateReceiptTotal()">
+    <input
+      id="receiptPrice"
+      type="number"
+      placeholder="Price"
+      oninput="calculateReceiptTotal()"
+    >
 
     <h3 id="receiptLiveTotal">TOTAL: UGX 0</h3>
 
@@ -212,21 +196,27 @@
 
     <div id="receiptResult"></div>
 
-    <h3>Receipt History</h3>
-    <div id="receiptHistory"></div>
-
     <hr>
 
-    <h3>Previous Receipts</h3>
-    <input type="text" id="receiptSearch"
+    <h3>Receipt History</h3>
+
+    <input
+      type="text"
+      id="receiptSearch"
       placeholder="Search receipt number or customer..."
-      oninput="searchReceipts()">
+      oninput="searchReceipts()"
+    >
 
     <button onclick="showReceiptHistory()">
       View Receipt History
     </button>
+
+    <div id="receiptHistory"></div>
+
   </div>
 
+
+  <!-- APP SCRIPTS -->
   <script src="app.js"></script>
   <script src="products.js"></script>
   <script src="sales.js"></script>
