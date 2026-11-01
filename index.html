@@ -227,6 +227,15 @@
   <script src="backup.js"></script>
   <script src="security.js"></script>
   <script src="settings.js"></script>
-
+  
+  <script>
+    if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js");
+  });
+}
+  </script>
 </body>
+  <link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#071426">
 </html>
