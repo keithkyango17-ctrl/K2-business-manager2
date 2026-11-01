@@ -26,6 +26,12 @@ function showSales() {
 
   section.innerHTML = `
     <h3>Record New Sale</h3>
+    <label>Customer Name</label>
+<input id="saleCustomer" placeholder="Customer name">
+
+<label>Customer Phone</label>
+<input id="saleCustomerPhone" type="tel"
+placeholder="Customer phone number">
 
     <label>Select Product</label>
     <select id="saleProduct" onchange="updateSaleDetails()">
