@@ -23,6 +23,8 @@ function showProducts() {
   }
 
   section.innerHTML = `
+    <button onclick="goHome()">← Home</button>
+
     <h3>Product Inventory</h3>
 
     <input id="pName" placeholder="Product name">
