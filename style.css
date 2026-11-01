@@ -442,3 +442,150 @@ button:active {
     padding: 18px;
   }
 }
+/* K2 BUSINESS MANAGER HOME DESIGN */
+
+body {
+  background: #080f20;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+}
+
+#dashboardPage {
+  max-width: 1100px;
+  margin: auto;
+  padding: 18px;
+}
+
+.home-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.home-logo {
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
+}
+
+.home-brand h2 {
+  margin: 0;
+  font-size: 19px;
+  color: #ffffff;
+}
+
+.home-brand p {
+  margin: 5px 0 0;
+  color: #9db4d8;
+}
+
+.welcome-message {
+  background: #102448;
+  padding: 22px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.welcome-message p {
+  color: #48a5ff !important;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.welcome-message h1 {
+  font-size: 27px;
+  margin: 10px 0;
+  color: white;
+}
+
+.welcome-message span {
+  color: #c0cde0;
+}
+
+#today {
+  display: block;
+  margin-top: 15px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 25px;
+}
+
+.stat {
+  background: #122b50;
+  padding: 18px;
+  border-radius: 14px;
+  border-left: 4px solid #258cff;
+}
+
+.stat p {
+  color: #b8c9e2;
+  margin: 0 0 12px;
+}
+
+.stat h2 {
+  color: #ffffff;
+  font-size: 20px;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.panel {
+  background: #102448;
+  padding: 18px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+}
+
+.panel h3 {
+  margin-top: 0;
+  color: #ffffff;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.actions button {
+  background: #183963;
+  color: white;
+  border: 1px solid #28558a;
+  border-radius: 12px;
+  padding: 18px 10px;
+  min-height: 85px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.actions button span {
+  display: block;
+  color: #48a5ff;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.actions button:active {
+  background: #24558d;
+  transform: scale(0.98);
+}
+
+#activity {
+  color: #b8c9e2;
+}
+
+@media (min-width: 700px) {
+  .stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .actions {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
