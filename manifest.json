@@ -1,0 +1,13 @@
+{
+  "background_color": "#071426",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "K2 Business Manager",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "K2 Manager",
+  "start_url": "/",
+  "theme_color": "#071426",
+  "id": "K2-business-manager",
+  "description": "Manage products, sales, receipts, expenses and customers with K2 Business Manager."
+}
