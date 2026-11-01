@@ -1,4 +1,4 @@
-const CACHE_NAME = "k2-business-manager-v1";
+const CACHE_NAME = "k2-business-manager-v2";
 
 const FILES_TO_CACHE = [
   "./",
@@ -14,6 +14,8 @@ const FILES_TO_CACHE = [
   "./security.js",
   "./settings.js",
   "./manifest.json",
+  "./k2-icon-192.png",
+"./k2-icon-512.png",
   "./K2-logo.png"
 ];
 
