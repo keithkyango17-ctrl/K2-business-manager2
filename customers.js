@@ -109,3 +109,4 @@ function deleteCustomer(id) {
 
   saveCustomers();
   showCustomers();
+}
