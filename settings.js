@@ -1,4 +1,10 @@
+function showDashboard() {
+  document.querySelectorAll('.page').forEach(page => {
+    page.style.display = 'none';
+  });
 
+  document.getElementById('dashboardPage').style.display = 'block';
+}
 function showSettings() {
   document.querySelectorAll('.page').forEach(page => {
     page.style.display = 'none';
