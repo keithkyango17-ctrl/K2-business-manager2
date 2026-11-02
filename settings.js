@@ -199,3 +199,41 @@ function calculateReceiptTotal() {
   document.getElementById("receiptLiveTotal").textContent =
     "TOTAL: UGX " + total.toLocaleString();
 }
+function loadReceiptProducts() {
+  const products = JSON.parse(
+    localStorage.getItem("k2_inventory") || "[]"
+  );
+
+  const select = document.getElementById("receiptProduct");
+
+  if (!select) return;
+
+  select.innerHTML = '<option value="">Choose a product</option>';
+
+  products.forEach(product => {
+    select.innerHTML += `
+      <option value="${product.id}">
+        ${product.name}
+      </option>
+    `;
+  });
+}
+
+function updateReceiptProduct() {
+  const products = JSON.parse(
+    localStorage.getItem("k2_inventory") || "[]"
+  );
+
+  const selectedId = document.getElementById("receiptProduct").value;
+
+  const product = products.find(
+    item => String(item.id) === selectedId
+  );
+
+  if (!product) return;
+
+  document.getElementById("receiptStock").value = product.stock;
+  document.getElementById("receiptPrice").value = product.sell;
+
+  calculateReceiptTotal();
+}
