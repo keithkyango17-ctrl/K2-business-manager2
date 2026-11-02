@@ -64,6 +64,7 @@ function showReceipts() {
   }
 
   displayReceiptHistory();
+  loadReceiptProducts();
 
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
