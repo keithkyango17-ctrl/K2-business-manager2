@@ -599,3 +599,29 @@ body {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 }
+@media print {
+
+  body * {
+    visibility: hidden;
+  }
+
+  #receiptPrint,
+  #receiptPrint * {
+    visibility: visible;
+  }
+
+  #receiptPrint {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background: white;
+    color: black;
+  }
+
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+}
