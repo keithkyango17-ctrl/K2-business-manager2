@@ -140,6 +140,9 @@ function createReceipt() {
       "k2_customers",
       JSON.stringify(customers)
     );
+    if (document.getElementById("customerList")) {
+  displayCustomers();
+    }
   }
 
   receiptHistory.unshift(receipt);
