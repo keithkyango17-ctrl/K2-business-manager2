@@ -136,6 +136,17 @@ function displayReceipt(receipt) {
   const businessName = business.name || "K2 Phone World";
   const businessPhone = business.phone || "";
   const businessAddress = business.address || "";
+  const products = JSON.parse(
+  localStorage.getItem("k2_inventory") || "[]"
+);
+
+const selectedProduct = products.find(
+  p => String(p.name) === String(receipt.product)
+);
+
+const stockAvailable = selectedProduct
+  ? (selectedProduct.stock ?? selectedProduct.quantity ?? 0)
+  : "Not found";
 
   document.getElementById("receiptResult").innerHTML = `
     <div id="printReceipt" style="
