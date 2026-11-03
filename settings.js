@@ -75,14 +75,18 @@ function showReceipts() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+
 function createReceipt() {
   const customer = document.getElementById("receiptCustomer").value.trim();
   const phone = document.getElementById("receiptPhone").value.trim();
-  const product = document.getElementById("receiptProduct").value.trim();
+
+  const productSelect = document.getElementById("receiptProduct");
+  const product = productSelect.options[productSelect.selectedIndex]?.text || "";
+
   const quantity = Number(document.getElementById("receiptQuantity").value);
   const price = Number(document.getElementById("receiptPrice").value);
 
-  if (!product || quantity <= 0 || price <= 0) {
+  if (!productSelect.value || quantity <= 0 || price <= 0) {
     alert("Please enter valid receipt details.");
     return;
   }
@@ -113,12 +117,11 @@ function createReceipt() {
   );
 
   displayReceipt(receipt);
-
   displayReceiptHistory();
 
   document.getElementById("receiptCustomer").value = "";
   document.getElementById("receiptPhone").value = "";
-  document.getElementById("receiptProduct").value = "";
+  productSelect.value = "";
   document.getElementById("receiptQuantity").value = "";
   document.getElementById("receiptPrice").value = "";
 }
