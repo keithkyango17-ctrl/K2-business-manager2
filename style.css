@@ -599,33 +599,31 @@ body {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 }
+
 @media print {
   body * {
     visibility: hidden !important;
   }
 
-  #receiptResult,
-  #receiptResult * {
+  #printReceipt,
+  #printReceipt * {
     visibility: visible !important;
   }
 
-  #receiptResult {
+  #printReceipt {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
+    max-width: 400px;
     background: white !important;
     color: black !important;
+    margin: 0;
     padding: 10px;
   }
 
-  button,
-  input,
-  select,
-  label,
-  h2,
-  h3,
-  hr {
+  .no-print {
     display: none !important;
   }
 }
+
