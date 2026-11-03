@@ -52,7 +52,6 @@ async function registerUser() {
     options: {
   data: { username },
   emailRedirectTo: "https://keithkyango17-ctrl.github.io/K2-business-manager2/"
-    }
   });
 
   if (error) {
