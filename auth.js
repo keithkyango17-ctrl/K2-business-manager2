@@ -99,20 +99,23 @@ async function loadK2UserData(user) {
       }
     });
 
-    if (!data) {
-      await saveK2UserData();
-    }
+    // Refresh the existing app variables
+    inventory = JSON.parse(localStorage.getItem("k2_inventory") || "[]");
+    salesHistory = JSON.parse(localStorage.getItem("k2_sales") || "[]");
+    expenseHistory = JSON.parse(localStorage.getItem("k2_expenses") || "[]");
+    customers = JSON.parse(localStorage.getItem("k2_customers") || "[]");
+    receiptHistory = JSON.parse(localStorage.getItem("k2_receipt_history") || "[]");
+    receiptCounter = Number(localStorage.getItem("k2_last_receipt") || 0);
 
     window.currentK2User = user;
 
     document.getElementById("authScreen").style.display = "none";
 
-    if (typeof updateDashboard === "function") {
-      updateDashboard();
-    }
+    updateDashboard();
+    goHome();
 
-    if (typeof goHome === "function") {
-      goHome();
+    if (!data) {
+      await saveK2UserData();
     }
 
   } catch (error) {
@@ -120,6 +123,7 @@ async function loadK2UserData(user) {
       "Could not load your business data: " + error.message;
 
     document.getElementById("authScreen").style.display = "flex";
+
   } finally {
     loadingK2Data = false;
   }
