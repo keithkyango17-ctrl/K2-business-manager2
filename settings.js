@@ -123,6 +123,7 @@ function createReceipt() {
   document.getElementById("receiptPrice").value = "";
 }
 
+
 function displayReceipt(receipt) {
   const business = JSON.parse(
     localStorage.getItem("k2_business_settings") || "{}"
@@ -131,37 +132,51 @@ function displayReceipt(receipt) {
   const currency = business.currency || "UGX";
   const businessName = business.name || "K2 Phone World";
   const businessPhone = business.phone || "";
+  const businessAddress = business.address || "";
 
   document.getElementById("receiptResult").innerHTML = `
     <div id="printReceipt" style="
-      background:white;color:#111;padding:20px;
-      margin-top:20px;border-radius:12px;
-      border-top:8px solid #087bff;font-family:Arial;">
+      background:white;
+      color:#111;
+      padding:20px;
+      margin-top:20px;
+      font-family:Arial;
+      max-width:400px;
+      border-top:6px solid #087bff;">
 
-      <div style="background:#080d20;color:white;padding:15px;text-align:center;">
-        <h2 style="color:#1685ff;">${businessName}</h2>
+      <div style="text-align:center;">
+        <h2>${businessName}</h2>
+        <p>${businessAddress}</p>
         <p>${businessPhone}</p>
         <h3>SALES RECEIPT</h3>
       </div>
 
-      <h3>Receipt No: ${receipt.receiptID}</h3>
-      <p>Date: ${receipt.date}</p>
-      <p>Customer: ${receipt.customer}</p>
-      <p>Phone: ${receipt.phone || "N/A"}</p>
+      <hr>
+
+      <p><strong>Receipt No:</strong> ${receipt.receiptID}</p>
+      <p><strong>Date:</strong> ${receipt.date}</p>
+      <p><strong>Customer:</strong> ${receipt.customer}</p>
+      <p><strong>Phone:</strong> ${receipt.phone || "N/A"}</p>
 
       <hr>
 
-      <p>Product: ${receipt.product}</p>
-      <p>Quantity: ${receipt.quantity}</p>
-      <p>Unit Price: ${currency} ${receipt.price.toLocaleString()}</p>
+      <p><strong>Product:</strong> ${receipt.product}</p>
+      <p><strong>Quantity:</strong> ${receipt.quantity}</p>
+      <p><strong>Unit Price:</strong> ${currency} ${receipt.price.toLocaleString()}</p>
 
-      <h2 style="color:#075bc5;">
+      <hr>
+
+      <h2 style="text-align:center;">
         TOTAL: ${currency} ${receipt.total.toLocaleString()}
       </h2>
 
-      <p style="text-align:center;">Thank you for shopping with us!</p>
+      <p style="text-align:center;">
+        Thank you for shopping with us!
+      </p>
 
-      <button onclick="window.print()">Print Receipt</button>
+      <button class="no-print" onclick="window.print()">
+        Print Receipt
+      </button>
     </div>
   `;
 }
