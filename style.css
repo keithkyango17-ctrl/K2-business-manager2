@@ -600,28 +600,32 @@ body {
   grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 }
 @media print {
-
   body * {
-    visibility: hidden;
+    visibility: hidden !important;
   }
 
-  #receiptPrint,
-  #receiptPrint * {
-    visibility: visible;
+  #receiptResult,
+  #receiptResult * {
+    visibility: visible !important;
   }
 
-  #receiptPrint {
+  #receiptResult {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
-    background: white;
-    color: black;
+    background: white !important;
+    color: black !important;
+    padding: 10px;
   }
 
   button,
-  .no-print {
+  input,
+  select,
+  label,
+  h2,
+  h3,
+  hr {
     display: none !important;
   }
-
 }
