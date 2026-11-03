@@ -108,6 +108,40 @@ function createReceipt() {
     date
   };
 
+  // AUTOMATIC CUSTOMER REGISTRATION
+  let customers = JSON.parse(
+    localStorage.getItem("k2_customers") || "[]"
+  );
+
+  if (customer || phone) {
+    let existingCustomer = customers.find(
+      c => phone && c.phone === phone
+    );
+
+    if (existingCustomer) {
+      existingCustomer.name = customer || existingCustomer.name;
+      existingCustomer.lastPurchase = date;
+      existingCustomer.totalPurchases =
+        (existingCustomer.totalPurchases || 0) + total;
+      existingCustomer.purchaseCount =
+        (existingCustomer.purchaseCount || 0) + 1;
+    } else {
+      customers.push({
+        id: Date.now(),
+        name: customer || "Unknown Customer",
+        phone,
+        lastPurchase: date,
+        totalPurchases: total,
+        purchaseCount: 1
+      });
+    }
+
+    localStorage.setItem(
+      "k2_customers",
+      JSON.stringify(customers)
+    );
+  }
+
   receiptHistory.unshift(receipt);
 
   localStorage.setItem("k2_last_receipt", receiptCounter);
