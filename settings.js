@@ -176,6 +176,7 @@ const stockAvailable = selectedProduct
 
       <p><strong>Product:</strong> ${receipt.product}</p>
       <p><strong>Quantity:</strong> ${receipt.quantity}</p>
+      <p><strong>Stock Available:</strong> ${stockAvailable}</p>
       <p><strong>Unit Price:</strong> ${currency} ${receipt.price.toLocaleString()}</p>
 
       <hr>
