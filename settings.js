@@ -151,6 +151,9 @@ const selectedProduct = products.find(
 const stockAvailable = selectedProduct
   ? selectedProduct.stock
   : "Not found";
+  console.log("Receipt product:", receipt.product);
+console.log("Inventory products:", products);
+console.log("Matched product:", selectedProduct);
   document.getElementById("receiptResult").innerHTML = `
     <div id="printReceipt" style="
       background:white;
