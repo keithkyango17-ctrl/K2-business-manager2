@@ -245,4 +245,35 @@
 }
   </script>
 </body>
+  <!-- SUPABASE CONNECTION -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<!-- K2 ACCOUNT SCREEN -->
+<div id="authScreen">
+  <img src="./K2-logo.png" alt="K2 Logo" width="120">
+
+  <h2>K2 BUSINESS MANAGER</h2>
+  <p id="authMessage">Welcome! Sign in or create your account.</p>
+
+  <div id="loginForm">
+    <input id="loginEmail" type="email" placeholder="Email address">
+    <input id="loginPassword" type="password" placeholder="Password">
+    <button onclick="loginUser()">Login</button>
+    <p>Don't have an account?
+      <a href="#" onclick="showSignup(); return false;">Sign Up</a>
+    </p>
+  </div>
+
+  <div id="signupForm" style="display:none;">
+    <input id="signupUsername" placeholder="Choose username">
+    <input id="signupEmail" type="email" placeholder="Email address">
+    <input id="signupPassword" type="password" placeholder="Create password">
+    <button onclick="registerUser()">Create Account</button>
+    <p>Already registered?
+      <a href="#" onclick="showLogin(); return false;">Login</a>
+    </p>
+  </div>
+
+  <p id="authError"></p>
+</div>
 </head>
