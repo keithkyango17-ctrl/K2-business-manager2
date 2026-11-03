@@ -221,6 +221,8 @@ function calculateReceiptTotal() {
   document.getElementById("receiptLiveTotal").textContent =
     "TOTAL: UGX " + total.toLocaleString();
 }
+
+
 function loadReceiptProducts() {
   const products = JSON.parse(
     localStorage.getItem("k2_inventory") || "[]"
@@ -234,7 +236,7 @@ function loadReceiptProducts() {
 
   products.forEach(product => {
     select.innerHTML += `
-      <option value="${product.id}">
+      <option value="${product.name}">
         ${product.name}
       </option>
     `;
