@@ -1,3 +1,4 @@
+
 const SUPABASE_URL = "https://pycgdwtefotizmllnulq.supabase.co";
 const SUPABASE_KEY = "sb_publishable_DawGJkYujmUDdM8qHPrHIQ_xqk3ejwe";
 
@@ -47,11 +48,12 @@ async function registerUser() {
   }
 
   const { error } = await supabaseClient.auth.signUp({
-    email,
-    password,
+    email: email,
+    password: password,
     options: {
-  data: { username },
-  emailRedirectTo: "https://keithkyango17-ctrl.github.io/K2-business-manager2/"
+      data: { username: username },
+      emailRedirectTo: "https://keithkyango17-ctrl.github.io/K2-business-manager2/"
+    }
   });
 
   if (error) {
@@ -60,16 +62,24 @@ async function registerUser() {
   }
 
   document.getElementById("authError").textContent =
-    "Account created! Check your email if confirmation is required, then log in.";
+    "Account created! Check your email for confirmation, then log in.";
 }
 
 async function loginUser() {
   const email = document.getElementById("loginEmail").value.trim();
   const password = document.getElementById("loginPassword").value;
 
+  if (!email || !password) {
+    document.getElementById("authError").textContent =
+      "Please enter your email and password.";
+    return;
+  }
+
+  document.getElementById("authError").textContent = "Signing in...";
+
   const { error } = await supabaseClient.auth.signInWithPassword({
-    email,
-    password
+    email: email,
+    password: password
   });
 
   if (error) {
@@ -78,6 +88,8 @@ async function loginUser() {
 }
 
 async function loadK2UserData(user) {
+  if (loadingK2Data) return;
+
   loadingK2Data = true;
 
   try {
@@ -99,7 +111,6 @@ async function loadK2UserData(user) {
       }
     });
 
-    // Refresh the existing app variables
     inventory = JSON.parse(localStorage.getItem("k2_inventory") || "[]");
     salesHistory = JSON.parse(localStorage.getItem("k2_sales") || "[]");
     expenseHistory = JSON.parse(localStorage.getItem("k2_expenses") || "[]");
