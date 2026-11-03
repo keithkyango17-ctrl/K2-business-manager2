@@ -626,4 +626,60 @@ body {
     display: none !important;
   }
 }
+/* K2 ACCOUNT SCREEN */
+#authScreen {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  background: #080f20;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  text-align: center;
+  overflow-y: auto;
+}
 
+#authScreen img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 15px;
+}
+
+#authScreen input {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  padding: 14px;
+  margin: 12px auto;
+  border-radius: 8px;
+  border: 1px solid #263957;
+  background: #101c34;
+  color: white;
+  font-size: 16px;
+}
+
+#authScreen button {
+  width: 100%;
+  max-width: 320px;
+  padding: 14px;
+  margin: 12px auto;
+  background: #087bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#authScreen a {
+  color: #36a0ff;
+}
+
+#authError {
+  color: #ff7777;
+  margin-top: 12px;
+}
