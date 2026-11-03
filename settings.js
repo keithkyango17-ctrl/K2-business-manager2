@@ -163,7 +163,7 @@ function createReceipt() {
   document.getElementById("receiptPrice").value = "";
 }
 
-
+ 
 function displayReceipt(receipt) {
   const business = JSON.parse(
     localStorage.getItem("k2_business_settings") || "{}"
@@ -173,24 +173,19 @@ function displayReceipt(receipt) {
   const businessName = business.name || "K2 Phone World";
   const businessPhone = business.phone || "";
   const businessAddress = business.address || "";
-  const products = JSON.parse(
-  localStorage.getItem("k2_inventory") || "[]"
-);
 
   const products = JSON.parse(
-  localStorage.getItem("k2_inventory") || "[]"
-);
+    localStorage.getItem("k2_inventory") || "[]"
+  );
 
-const selectedProduct = products.find(
-  p => String(p.name) === String(receipt.product)
-);
+  const selectedProduct = products.find(
+    p => String(p.name) === String(receipt.product)
+  );
 
-const stockAvailable = selectedProduct
-  ? selectedProduct.stock
-  : "Not found";
-  console.log("Receipt product:", receipt.product);
-console.log("Inventory products:", products);
-console.log("Matched product:", selectedProduct);
+  const stockAvailable = selectedProduct
+    ? selectedProduct.stock
+    : "Not found";
+
   document.getElementById("receiptResult").innerHTML = `
     <div id="printReceipt" style="
       background:white;
@@ -238,6 +233,7 @@ console.log("Matched product:", selectedProduct);
     </div>
   `;
 }
+
 
 function displayReceiptHistory() {
   const list = document.getElementById("receiptHistory");
