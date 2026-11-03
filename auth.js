@@ -50,7 +50,8 @@ async function registerUser() {
     email,
     password,
     options: {
-      data: { username }
+  data: { username },
+  emailRedirectTo: "https://keithkyango17-ctrl.github.io/K2-business-manager2/"
     }
   });
 
